@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>计算属性  搭配 for     函数  搭配 for </title>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+
+	<ul id="emample1">
+		<li v-for="n in evenNumbers">{{ n }}</li>
+	</ul>
+
+<ul id="emample2">
+		<li v-for="n in even(numbers)">{{ n }}</li>
+	</ul>
+
+
+
+<script type="text/javascript">
+	var em = new Vue({
+		el:'#emample1',
+		data:{
+			numbers:[1,2,3,4,5,6,7,8,9]
+		},
+
+		computed:{
+			evenNumbers:function(){
+
+				return this.numbers.filter(function (number){
+					return number%2 == 0
+				})
+			}
+		}
+	})
+
+
+
+	var em1 = new Vue({
+		el:'#emample2',
+		data:{
+			numbers:[1,2,3,4,5,6,7,8,9]
+		},
+		methods:{
+			even:function(numbers){
+				return numbers.filter(function(number){
+					return number % 2 ==0
+				})
+			}
+		}
+	})
+</script>
+</body>
+</html>
